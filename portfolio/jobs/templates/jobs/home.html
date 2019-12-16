@@ -74,7 +74,11 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
     <span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>
     <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-      <img id="img01" class="w3-image">
+      <a id="link" target="_blank">
+        <img id="img01" class="w3-image">
+      </a>
+      <h2 id="title"></h2>
+      <h6 id="status"></h6>
       <p id="caption"></p>
     </div>
   </div>
@@ -145,8 +149,39 @@ function w3_close() {
 function onClick(element) {
   document.getElementById("img01").src = element.src;
   document.getElementById("modal01").style.display = "block";
-  var captionText = document.getElementById("caption");
-  captionText.innerHTML= "Test";
+
+  var title;
+  var summary;
+  var link;
+  var status;
+
+  console.log(element.src)
+
+  var imgFile = element.src.split('/')
+  imgFile = imgFile[imgFile.length-1]
+
+  {% for job in jobs.all %}
+  targetImage = "{{ job.image.url }}".split('/')
+
+  if(imgFile == targetImage[targetImage.length-1]){
+    title = "{{ job.title }}";
+    summary = "{{ job.summary }}";
+    link = "{{ job.link }}";
+    status = "{{ job.status }}";
+  }
+
+  {% endfor %}
+
+  document.getElementById("link").href = link;
+
+  var headerText = document.getElementById("title");
+  headerText.innerHTML = title;
+
+  var statusText = document.getElementById("status");
+  statusText.innerHTML = status;
+
+  var summaryText = document.getElementById("caption");
+  summaryText.innerHTML= summary;
 }
 
 </script>
