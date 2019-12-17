@@ -18,11 +18,11 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
-  <h3 class="w3-padding-64 w3-center"><b>CARTER<br>RICHMOND</b></h3>
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
-  <a href="#" onclick="w3_close()" class="w3-bar-item w3-button">PORTFOLIO</a>
-  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT ME</a>
+<nav class="dark-blue w3-sidebar w3-bar-block w3-animate-left w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
+  <h3 class="w3-padding-64 w3-center grey-text"><b>CARTER<br>RICHMOND</b></h3>
+  <a href="javascript:void(0)" onclick="w3_close()" class="grey-text w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
+  <a href="#" onclick="w3_close()" class="grey-text w3-bar-item w3-button">PORTFOLIO</a>
+  <a href="#about" onclick="w3_close()" class="grey-text w3-bar-item w3-button">ABOUT ME</a>
 </nav>
 
 <!-- Top menu on small screens -->
@@ -43,7 +43,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <!-- Photo grid -->
   <div class="w3-row">
 
-    {% for job in jobs.all reversed %}
+    {% for job in jobs.all|dictsort:"date" reversed %}
 
     <div class="w3-third">
         <img src="{{ job.image.url }}" style="width:100%" onclick="onClick(this)">
@@ -84,12 +84,12 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
 
   <!-- About section -->
-  <div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32 w3-margin-top" id="about">
-    <h4><b>About Me</b></h4>
+  <div class="w3-container blue w3-center w3-text-light-grey w3-padding-32 w3-margin-top" id="about">
+    <h4><b class="grey-text">About Me</b></h4>
     <img src="{% static 'Carter_Richmond.jpg' %}" alt="Me" class="w3-padding-32" height="450">
     <div class="w3-content w3-justify" style="max-width:600px">
-      <h4>Carter Richmond</h4>
-      <p>
+      <h4 class="grey-text">Carter Richmond</h4>
+      <p class="grey-text">
         I am a Senior Computer Science Student at Wenworth Institute of Technology (Expected to graduate Summer 2020). I am interested in machine learning and data science. I have experience data munging, training models, and working with messy signal data streams. I hope to use data to drive innovations that allow people to become the best versions of themselves. 
       </p>
 
@@ -113,7 +113,7 @@ body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
           <li>
             <a href="mailto:richmondc1@wit.edu" target="_blank" class="icon">
-              <svg viewBox="0 0 25 25" width="50" height="50" class="small-icon">
+              <svg viewBox="0 0 25 25" width="50" height="50">
                 <path class="" d="M14.5 2h-13c-0.825 0-1.5 0.675-1.5 1.5v10c0 0.825 0.675 1.5 1.5 1.5h13c0.825 0 1.5-0.675 1.5-1.5v-10c0-0.825-0.675-1.5-1.5-1.5zM6.23 8.6l-4.23 3.295v-7.838l4.23 4.543zM2.756 4h10.488l-5.244 3.938-5.244-3.938zM6.395 8.777l1.605 1.723 1.605-1.723 3.29 4.223h-9.79l3.29-4.223zM9.77 8.6l4.23-4.543v7.838l-4.23-3.295z"></path>
               </svg>
             </a>

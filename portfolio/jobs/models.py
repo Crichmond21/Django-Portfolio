@@ -6,6 +6,7 @@ class Job(models.Model):
     summary = models.CharField(max_length=1000)
     status = models.CharField(max_length=20)
     link = models.CharField(max_length=500)
+    date = models.DateField()
 
     def __str__(self):
         return self.title
