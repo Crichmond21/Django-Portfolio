@@ -1,0 +1,18 @@
+
+version: '3'
+
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=portfoliodb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=576576
+  web:
+    build: .
+    command: bash -c "python portfolio/manage.py makemigrations && python portfolio/manage.py migrate && python portfolio/manage.py runserver 0.0.0.0:8000"
+    container_name: carter_portfolio
+    volumes:
+      - .:/portfolio
+    ports:
+      - "8000:8000"
